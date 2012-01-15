@@ -5,7 +5,7 @@ html {
 html, body {
     padding: 0;
     margin: 0;
-    font-family: "dejavu sans", "bitstream vera sans", verdana, sans-serif;
+    font-family: "Lato", "dejavu sans", "bitstream vera sans", verdana, sans-serif;
     line-height: 1.5;
 }
 
@@ -23,13 +23,25 @@ html, body {
     color: #EDC951;
 }
 
+h1, h1 a {
+    font-family: "Lato", "dejavu sans", "bitstream vera sans", verdana, sans-serif;
+    font-weight: bold;
+    text-decoration: none;
+}
+
 .alternate {
     color: #6A4A3C;
 }
 
-h1, h2, h3, h4, h5, h6,
-h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+.container {
+    padding-top: 1em;
+}
+
+.container, .container input {
+    font-size: 16pt;
     font-family: "Lato", "dejavu sans", "bitstream vera sans", verdana, sans-serif;
-    font-weight: bold;
-    text-decoration: none;
+}
+
+.container input {
+    margin: 0 1em;
 }
