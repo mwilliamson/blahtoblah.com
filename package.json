@@ -1,0 +1,13 @@
+{
+    "name": "blahtoblah.com",
+    "version": "0.1.0",
+    "dependencies": {
+        "dust": "latest",
+        "connect": "latest"
+    },
+    "devDependencies": {
+        "nodeunit": "latest"
+    }
+}
+
+
