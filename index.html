@@ -10,14 +10,25 @@
       <h1>blah<span class="alternate">to</span>blah<span class="alternate">.com</span></h1>
     </div>
     <div class="container">
-      <form action="/" method="get">
-        Convert
-        <input type="text" name="from" value="{from}">
-        to
-        <input type="text" name="to" value="{to}">
-        <input type="submit" value="Convert">
-      </form>
-      <p>{result}</p>
+      <div class="main">
+        <form action="/" method="get">
+          Convert
+          <input type="text" name="from" value="{from}">
+          to
+          <input type="text" name="to" value="{to}">
+          <input type="submit" value="Convert">
+        </form>
+        {#result}
+          <p>{result}</p>
+        {/result}
+      </div>
+      
+      <h2>Examples</h2>
+      <ul class="examples">
+        <li><a href="/?from=12+metres&to=inches">Convert 12 metres to inches</a></li>
+        <li><a href="/?from=500000+cats&to=Olympic-sized+swimming+pools">Convert 500000 cats to Olympic-sized swimming pools</a></li>
+        <li><a href="/?from=12+metres&to=blah">Convert 12 metres to blah</a></li>
+      </ul>
     </div>
   </body>
 </html>
