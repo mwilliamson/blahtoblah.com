@@ -85,3 +85,16 @@ exports.unitsWithPrefixesAreGenerated = function(test) {
     test.equal(converter("8 metres", "centimetres"), "8 metres is 800 centimetres");
     test.done();
 };
+
+exports.unitAbbreviationsWithPrefixesAreGenerated = function(test) {
+    var converter = convert.createConverter({
+        units: [
+            {names: ["metres"], abbreviations: ["m"], size: 1, dimension: "length"}
+        ],
+        prefixes: [
+            {name: "centi", abbreviation: "c", factor: 1e-2}
+        ]
+    });
+    test.equal(converter("8 m", "cm"), "8 metres is 800 centimetres");
+    test.done();
+};
