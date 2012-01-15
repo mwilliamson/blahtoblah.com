@@ -67,3 +67,16 @@ exports.errorMessageIfDimensionsDontMatch = function(test) {
     test.equal(converter("8 metres", "seconds"), "seconds is not a measure of length");
     test.done();
 };
+
+exports.unitsWithPrefixesAreGenerated = function(test) {
+    var converter = convert.createConverter({
+        units: [
+            {names: ["metres"], size: 1, dimension: "length"}
+        ],
+        prefixes: [
+            {name: "centi", factor: 1e-2}
+        ]
+    });
+    test.equal(converter("8 metres", "centimetres"), "8 metres is 800 centimetres");
+    test.done();
+};
