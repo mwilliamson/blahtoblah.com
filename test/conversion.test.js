@@ -112,6 +112,18 @@ exports.blahAsToStringSelectsRandomUnitInSameDimension = function(test) {
 };
 
 exports.blahAsFromUnitStringSelectsRandomUnitInSameDimensionAsToString = function(test) {
+    var converter = convert.createConverter({
+        units: [
+            {names: ["centimetres"], abbreviations: ["cm"], size: 0.01, dimension: "length"},
+            {names: ["metres"], abbreviations: ["m"], size: 1, dimension: "length"}
+        ]
+    });
+    var result = converter("2 blah", "blah");;
+    test.ok(result === "2 centimetres is 0.02 metres" || result === "2 metres is 200 centimetres");
+    test.done();
+};
+
+exports.blahForBothFromUnitsAndToUnitsSelectsRandomUnit = function(test) {
     test.equal(converter("120 blah", "minutes"), "120 seconds is 2 minutes");
     test.done();
 };
