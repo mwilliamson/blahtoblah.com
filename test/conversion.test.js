@@ -4,6 +4,7 @@ var converter = convert.createConverter({
     units: [
         {names: ["centimetres"], size: 0.01, dimension: "length"},
         {names: ["metres"], size: 1, dimension: "length"},
+        {names: ["seconds"], size: 1, dimension: "time"}
     ]
 });
 
@@ -59,5 +60,10 @@ exports.errorMessageIfFromUnitsIsNotRecognised = function(test) {
 
 exports.errorMessageIfToUnitsIsNotRecognised = function(test) {
     test.equal(converter("8 metres", "inches"), "I don't recognise \"inches\"");
+    test.done();
+};
+
+exports.errorMessageIfDimensionsDontMatch = function(test) {
+    test.equal(converter("8 metres", "seconds"), "seconds is not a measure of length");
     test.done();
 };
