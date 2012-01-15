@@ -12,6 +12,18 @@ exports.noOutputIfToIsEmpty = function(test) {
     test.done();
 };
 
+exports.noOutputIfFromIsWhitespace = function(test) {
+    var converter = convert.createConverter();
+    test.equal(converter("  ", "inches"), null);
+    test.done();
+};
+
+exports.noOutputIfToIsWhitespace = function(test) {
+    var converter = convert.createConverter();
+    test.equal(converter("4 metres", "  "), null);
+    test.done();
+};
+
 exports.convertsBetweenUnitsIfTheUnitsRepresentTheSameMetric = function(test) {
     var converter = convert.createConverter({
         units: [
