@@ -89,3 +89,14 @@ exports.errorMessageIfFromUnitsIsNotRecognised = function(test) {
     test.equal(converter("8 inches", "centimetres"), "I don't recognise \"inches\"");
     test.done();
 };
+
+exports.errorMessageIfToUnitsIsNotRecognised = function(test) {
+    var converter = convert.createConverter({
+        units: [
+            {names: ["centimetres"], size: 0.01, siUnit: "m"},
+            {names: ["metres"], size: 1, siUnit: "m"},
+        ]
+    });
+    test.equal(converter("8 metres", "inches"), "I don't recognise \"inches\"");
+    test.done();
+};
