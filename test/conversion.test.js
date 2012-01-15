@@ -115,3 +115,17 @@ exports.zeroesAreNotRemovedFromExponentialNotation = function(test) {
     test.equal(converter("1e30 m", "m"), "1.00000e+30 metres is 1.00000e+30 metres");
     test.done();
 };
+
+exports.hyphenatePrefixesIfTheyContainASpace = function(test) {
+    var converter = convert.createConverter({
+        units: [
+            {names: ["metres"], abbreviations: ["m"], size: 1, dimension: "length"},
+            {names: ["long buses"], abbreviations: [], size: 20, dimension: "length"},
+        ],
+        prefixes: [
+            {name: "centi", abbreviation: "c", factor: 1e-2}
+        ]
+    });
+    test.equal(converter("20 m", "centi-long buses"), "20 metres is 100 centi-long buses");
+    test.done();
+};
