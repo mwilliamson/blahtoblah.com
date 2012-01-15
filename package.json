@@ -4,7 +4,8 @@
     "dependencies": {
         "dust": "latest",
         "connect": "latest",
-        "underscore": "latest"
+        "underscore": "latest",
+        "sprintf": "latest"
     },
     "devDependencies": {
         "nodeunit": "latest"

@@ -4,6 +4,7 @@ var converter = convert.createConverter({
     units: [
         {names: ["centimetres"], abbreviations: ["cm"], size: 0.01, dimension: "length"},
         {names: ["metres"], abbreviations: ["m"], size: 1, dimension: "length"},
+        {names: ["inches"], abbreviations: ["in"], size: 0.0254, dimension: "length"},
         {names: ["seconds"], size: 1, dimension: "time"}
     ]
 });
@@ -54,12 +55,12 @@ exports.errorMessageIfFromSizeIsUnreadable = function(test) {
 };
 
 exports.errorMessageIfFromUnitsIsNotRecognised = function(test) {
-    test.equal(converter("8 inches", "centimetres"), "I don't recognise \"inches\"");
+    test.equal(converter("8 linguine", "centimetres"), "I don't recognise \"linguine\"");
     test.done();
 };
 
 exports.errorMessageIfToUnitsIsNotRecognised = function(test) {
-    test.equal(converter("8 metres", "inches"), "I don't recognise \"inches\"");
+    test.equal(converter("8 metres", "linguine"), "I don't recognise \"linguine\"");
     test.done();
 };
 
@@ -96,5 +97,10 @@ exports.unitAbbreviationsWithPrefixesAreGenerated = function(test) {
         ]
     });
     test.equal(converter("8 m", "cm"), "8 metres is 800 centimetres");
+    test.done();
+};
+
+exports.unitsAreRoundedToSixSignificantFigures = function(test) {
+    test.equal(converter("1 m", "in"), "1 metres is 39.3701 inches");
     test.done();
 };
