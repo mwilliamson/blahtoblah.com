@@ -5,7 +5,8 @@ var converter = convert.createConverter({
         {names: ["centimetres"], abbreviations: ["cm"], size: 0.01, dimension: "length"},
         {names: ["metres"], abbreviations: ["m"], size: 1, dimension: "length"},
         {names: ["inches"], abbreviations: ["in"], size: 0.0254, dimension: "length"},
-        {names: ["seconds"], size: 1, dimension: "time"}
+        {names: ["seconds"], size: 1, dimension: "time"},
+        {names: ["minutes"], size: 60, dimension: "time"}
     ]
 });
 
@@ -102,5 +103,10 @@ exports.unitAbbreviationsWithPrefixesAreGenerated = function(test) {
 
 exports.unitsAreRoundedToSixSignificantFigures = function(test) {
     test.equal(converter("1 m", "in"), "1 metres is 39.3701 inches");
+    test.done();
+};
+
+exports.blahAsToStringSelectsRandomUnitInSameDimension = function(test) {
+    test.equal(converter("120 seconds", "blah"), "120 seconds is 2 minutes");
     test.done();
 };
