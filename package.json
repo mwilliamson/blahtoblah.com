@@ -3,7 +3,8 @@
     "version": "0.1.0",
     "dependencies": {
         "dust": "latest",
-        "connect": "latest"
+        "connect": "latest",
+        "underscore": "latest"
     },
     "devDependencies": {
         "nodeunit": "latest"
