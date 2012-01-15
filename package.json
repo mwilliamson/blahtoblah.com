@@ -2,7 +2,7 @@
     "name": "blahtoblah.com",
     "version": "0.1.0",
     "dependencies": {
-        "dust": "latest",
+        "dust": "git://github.com/caolan/dustjs.git",
         "connect": "latest",
         "underscore": "latest",
         "sprintf": "latest"
