@@ -102,7 +102,7 @@ exports.unitAbbreviationsWithPrefixesAreGenerated = function(test) {
 };
 
 exports.unitsAreRoundedToSixSignificantFigures = function(test) {
-    test.equal(converter("1 m", "in"), "1 metres is 39.3701 inches");
+    test.equal(converter("1 m", "in"), "1.0 metres is 39.3701 inches");
     test.done();
 };
 
@@ -127,5 +127,11 @@ exports.hyphenatePrefixesIfTheyContainASpace = function(test) {
         ]
     });
     test.equal(converter("20 m", "centi-long buses"), "20 metres is 100 centi-long buses");
+    test.done();
+};
+
+exports.oneUnitIsDisplayedWithPointZero = function(test) {
+    // Hack to try to disguise the lack of singular/plural distinction
+    test.equal(converter("1 m", "m"), "1.0 metres is 1.0 metres");
     test.done();
 };
