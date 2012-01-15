@@ -2,8 +2,8 @@ var convert = require("../lib/conversion.js");
 
 var converter = convert.createConverter({
     units: [
-        {names: ["centimetres"], size: 0.01, dimension: "length"},
-        {names: ["metres"], size: 1, dimension: "length"},
+        {names: ["centimetres"], abbreviations: ["cm"], size: 0.01, dimension: "length"},
+        {names: ["metres"], abbreviations: ["m"], size: 1, dimension: "length"},
         {names: ["seconds"], size: 1, dimension: "time"}
     ]
 });
@@ -65,6 +65,11 @@ exports.errorMessageIfToUnitsIsNotRecognised = function(test) {
 
 exports.errorMessageIfDimensionsDontMatch = function(test) {
     test.equal(converter("8 metres", "seconds"), "seconds is not a measure of length");
+    test.done();
+};
+
+exports.abbreviationsAreRecognisedInFromAndToStrings = function(test) {
+    test.equal(converter("4 m", "cm"), "4 metres is 400 centimetres");
     test.done();
 };
 
