@@ -152,3 +152,20 @@ exports.oneUnitIsDisplayedWithPointZero = function(test) {
     test.equal(converter("1 m", "m"), "1.0 metres is 1.0 metres");
     test.done();
 };
+
+exports.outputFormatIsUsedForOutputIfPresent = function(test) {
+    var converter = convert.createConverter({
+        units: [
+            {
+                names: ["Olympic-sized swimming pools"], abbreviations: [], size: 2502.8676904, dimension: "volume",
+                outputFormat: "enough to fill {size} {unit}"
+            },
+            {names: ["cats"], abbreviations: [], size: 0.0106188175, dimension: "volume"}
+        ]
+    });
+    test.equal(
+        converter("500000 cats", "Olympic-sized swimming pools"),
+        "500000 cats is enough to fill 2.12133 Olympic-sized swimming pools"
+    );
+    test.done();
+};
