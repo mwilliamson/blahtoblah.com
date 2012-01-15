@@ -111,6 +111,11 @@ exports.blahAsToStringSelectsRandomUnitInSameDimension = function(test) {
     test.done();
 };
 
+exports.blahAsFromUnitStringSelectsRandomUnitInSameDimensionAsToString = function(test) {
+    test.equal(converter("120 blah", "minutes"), "120 seconds is 2 minutes");
+    test.done();
+};
+
 exports.zeroesAreNotRemovedFromExponentialNotation = function(test) {
     test.equal(converter("1e30 m", "m"), "1.00000e+30 metres is 1.00000e+30 metres");
     test.done();
