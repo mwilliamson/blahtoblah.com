@@ -111,7 +111,7 @@ exports.blahAsToStringSelectsRandomUnitInSameDimension = function(test) {
     test.done();
 };
 
-exports.blahAsFromUnitStringSelectsRandomUnitInSameDimensionAsToString = function(test) {
+exports.blahForBothFromUnitsAndToUnitsSelectsRandomUnit = function(test) {
     var converter = convert.createConverter({
         units: [
             {names: ["centimetres"], abbreviations: ["cm"], size: 0.01, dimension: "length"},
@@ -123,7 +123,7 @@ exports.blahAsFromUnitStringSelectsRandomUnitInSameDimensionAsToString = functio
     test.done();
 };
 
-exports.blahForBothFromUnitsAndToUnitsSelectsRandomUnit = function(test) {
+exports.blahAsFromUnitStringSelectsRandomUnitInSameDimensionAsToString = function(test) {
     test.equal(converter("120 blah", "minutes"), "120 seconds is 2 minutes");
     test.done();
 };
