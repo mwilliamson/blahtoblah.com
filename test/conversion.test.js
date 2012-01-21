@@ -144,6 +144,12 @@ exports.blahAsFromSizeSelectsSizeUsingSelector = function(test) {
     test.done();
 };
 
+exports.canSelectRandomSizeUsingDefaultBlahSelector = function(test) {
+    var result = converter("blah minutes", "seconds");
+    test.ok(/^-?[0-9]+ minutes is -?[0-9]+ seconds$/.test(result), "got: " + result);
+    test.done();
+};
+
 exports.zeroesAreNotRemovedFromExponentialNotation = function(test) {
     test.equal(converter("1e30 m", "m"), "1.00000e+30 metres is 1.00000e+30 metres");
     test.done();
