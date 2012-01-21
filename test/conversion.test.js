@@ -128,6 +128,22 @@ exports.blahAsFromUnitStringSelectsRandomUnitInSameDimensionAsToString = functio
     test.done();
 };
 
+exports.blahAsFromSizeSelectsSizeUsingSelector = function(test) {
+    var converter = convert.createConverter({
+        units: [
+            {names: ["seconds"], size: 1, dimension: "time"},
+            {names: ["minutes"], size: 60, dimension: "time"}
+        ],
+        blahSelector: {
+            generateSize: function() {
+                return 120;
+            }
+        }
+    });
+    test.equal(converter("blah seconds", "minutes"), "120 seconds is 2 minutes");
+    test.done();
+};
+
 exports.zeroesAreNotRemovedFromExponentialNotation = function(test) {
     test.equal(converter("1e30 m", "m"), "1.00000e+30 metres is 1.00000e+30 metres");
     test.done();
