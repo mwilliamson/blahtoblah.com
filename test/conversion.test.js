@@ -1,13 +1,14 @@
 var convert = require("../lib/conversion.js");
 
+var units = [
+    {names: ["centimetres"], abbreviations: ["cm"], size: 0.01, dimension: "length"},
+    {names: ["metres"], abbreviations: ["m"], size: 1, dimension: "length"},
+    {names: ["inches"], abbreviations: ["in"], size: 0.0254, dimension: "length"},
+    {names: ["seconds"], size: 1, dimension: "time"},
+    {names: ["minutes"], size: 60, dimension: "time"}
+];
 var converter = convert.createConverter({
-    units: [
-        {names: ["centimetres"], abbreviations: ["cm"], size: 0.01, dimension: "length"},
-        {names: ["metres"], abbreviations: ["m"], size: 1, dimension: "length"},
-        {names: ["inches"], abbreviations: ["in"], size: 0.0254, dimension: "length"},
-        {names: ["seconds"], size: 1, dimension: "time"},
-        {names: ["minutes"], size: 60, dimension: "time"}
-    ]
+    units: units
 });
 
 exports.noOutputIfFromIsEmpty = function(test) {
@@ -147,6 +148,41 @@ exports.blahAsFromSizeSelectsSizeUsingSelector = function(test) {
 exports.canSelectRandomSizeUsingDefaultBlahSelector = function(test) {
     var result = converter("blah minutes", "seconds");
     test.ok(/^-?[0-9]+ minutes is -?[0-9]+ seconds$/.test(result), "got: " + result);
+    test.done();
+};
+
+exports.blahForBothFromAndToStringSelectsRandomSizeAndUnits = function(test) {
+    var converter = convert.createConverter({
+        units: [
+            {names: ["seconds"], size: 1, dimension: "time"},
+            {names: ["minutes"], size: 60, dimension: "time"}
+        ],
+        blahSelector: {
+            generateSize: function() {
+                return 120;
+            },
+            selectElement: function(array) {
+                return array[0];
+            }
+        }
+    });
+    test.equal(converter("blah", "blah"), "120 seconds is 2 minutes");
+    test.done();
+};
+
+exports.blahForFromStringSelectsRandomFromSizeAndUnitThatMatchesToUnit = function(test) {
+    var converter = convert.createConverter({
+        units: units,
+        blahSelector: {
+            generateSize: function() {
+                return 120;
+            },
+            selectElement: function(array) {
+                return array[0];
+            }
+        }
+    });
+    test.equal(converter("blah", "minutes"), "120 seconds is 2 minutes");
     test.done();
 };
 
