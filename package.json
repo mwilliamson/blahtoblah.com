@@ -1,15 +1,12 @@
 {
-    "name": "blahtoblah.com",
-    "version": "0.1.0",
-    "dependencies": {
-        "dust": "git://github.com/caolan/dustjs.git",
-        "connect": "latest",
-        "underscore": "latest",
-        "sprintf": "latest"
-    },
-    "devDependencies": {
-        "nodeunit": "latest"
-    }
+  "name": "blahtoblah.com",
+  "version": "0.1.0",
+  "dependencies": {
+    "connect": "~2.14.3",
+    "underscore": "~1.6.0",
+    "dustjs-linkedin": "~2.3.4"
+  },
+  "devDependencies": {
+    "nodeunit": "~0.8.6"
+  }
 }
-
-
