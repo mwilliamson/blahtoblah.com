@@ -1,0 +1,15 @@
+server {
+        listen   80;
+        listen   [::]:80;
+
+        server_name  blahtoblah.com www.blahtoblah.com;
+
+        access_log  /var/log/nginx/blahtoblah.access.log;
+
+        location / {
+                proxy_pass http://127.0.0.1:8414;
+                root   /var/www/blahtoblah.com;
+                expires 0;
+                #index  index.html index.htm;
+        }
+}
