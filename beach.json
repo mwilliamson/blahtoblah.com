@@ -1,0 +1,6 @@
+{
+    "name": "blahtoblah.com",
+    "service": "${node-0.10.path}/bin/node lib/http-server.js",
+    "install": "${node-0.10.path}/bin/npm install",
+    "dependencies": ["node-0.10"]
+}
